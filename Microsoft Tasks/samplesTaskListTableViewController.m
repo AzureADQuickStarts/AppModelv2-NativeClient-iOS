@@ -7,12 +7,17 @@
 //
 
 #import "samplesTaskListTableViewController.h"
-#import "SamplesApplicationData.h"
 #import "samplesTaskItem.h"
 #import "sampleAddTaskItemViewController.h"
 #import "samplesWebAPIConnector.h"
 #import "ADALiOS/ADAuthenticationContext.h"
 #import "SamplesSelectUserViewController.h"
+#import <Foundation/Foundation.h>
+#import "samplesTaskItem.h"
+#import "samplesPolicyData.h"
+#import "ADALiOS/ADAuthenticationResult.h"
+#import "samplesApplicationData.h"
+
 
 @interface samplesTaskListTableViewController ()
 
@@ -26,25 +31,27 @@
 
 -(void)loadData {
     
-    SamplesApplicationData* appData = [SamplesApplicationData getInstance];
+     SamplesApplicationData* appData = [SamplesApplicationData getInstance];
     
-    if (!appData.userItem.userInformation.userId) {
+    if (!appData.userItem.profileInfo.username) {
         
         dispatch_async(dispatch_get_main_queue(),^ {
-            
-            SamplesSelectUserViewController* userSelectController = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectUserView"];
-            [self.navigationController pushViewController:userSelectController animated:YES];
+        
+        SamplesSelectUserViewController* userSelectController = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectUserView"];
+        [self.navigationController pushViewController:userSelectController animated:YES];
         });
     }
 
     
     // Load data from the webservice
+    
     if (appData.userItem) {
-        
     [samplesWebAPIConnector getTaskList:^(NSArray *tasks, NSError* error) {
+        
         
         if (error != nil && appData.userItem)
         {
+            
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:[[NSString alloc]initWithFormat:@"%@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:@"Cancel", nil];
             
             [alertView setDelegate:self];
@@ -52,7 +59,10 @@
             dispatch_async(dispatch_get_main_queue(),^ {
                 [alertView show];
             });
+
         }
+        
+                           
         else
         {
             self.taskItems = (NSMutableArray*)tasks;
@@ -60,19 +70,32 @@
             // Refresh main thread since we are async
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
-                SamplesApplicationData* appData = [SamplesApplicationData getInstance];
-                if(appData.userItem && appData.userItem.userInformation)
+                if(appData.userItem &&
+                   appData.userItem.profileInfo)
                 {
-                    [self.userLabel setText:appData.userItem.userInformation.userId];
+                    [self.userLabel setText:appData.userItem.profileInfo.friendlyName];
                 }
                 else
                 {
-                    [self.userLabel setText:@"N/A" ];
+                    [self.userLabel setText:@"No Logged in user"];
                 }
             });
         }
     } parent:self];
     } }
+
+- (IBAction)switchUserPressed:(id)sender {
+    
+    [samplesWebAPIConnector signOut];
+    [self.taskItems removeAllObjects];
+    
+    // Refresh main thread since we are async
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+    
+    [self loadData];
+}
 
 - (void)viewDidLoad
 {
@@ -96,9 +119,9 @@
         [self loadData];
     }
     
-    if(appData.userItem && appData.userItem.userInformation)
+    if(appData.userItem && appData.userItem.profileInfo)
     {
-        [self.userLabel setText:appData.userItem.userInformation.userId];    }
+        [self.userLabel setText:appData.userItem.profileInfo.username];    }
     else
     {
         [self.userLabel setText:@"N/A" ];
@@ -108,10 +131,13 @@
 
 -(void) refreshInvoked:(id)sender forState:(UIControlState)state {
     // Refresh table here...
+    
+
     [self.taskItems removeAllObjects];
     [self.tableView reloadData];
     [self loadData];
     [self.refreshControl endRefreshing];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,7 +145,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark - Table view data source
 
@@ -160,50 +185,46 @@
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
-
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
 
 
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
-     
-         
-         samplesTaskItem *selectedItem = [self.taskItems objectAtIndex:indexPath.row];
-         [samplesWebAPIConnector deleteTask:selectedItem parent:self completionBlock:^(bool success, NSError* error) {
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        
+        samplesTaskItem *selectedItem = [self.taskItems objectAtIndex:indexPath.row];
+        [samplesWebAPIConnector deleteTask:selectedItem parent:self completionBlock:^(bool success, NSError* error) {
             
-             if (error != nil) {
-
-                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:[[NSString alloc]initWithFormat:@"Error : %@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:@"Cancel", nil];
-                 
-                 [alertView setDelegate:self];
-                 
-                 dispatch_async(dispatch_get_main_queue(),^ {
-                     [alertView show];
-                 });
-             }
-             
-             }];
-     
-     [self.taskItems removeObjectAtIndex:indexPath.row];
-     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-     
-     }
-     
-     [self.taskItems removeAllObjects];
-     [self.tableView reloadData];
-     [self loadData];
-
- 
- }
-
-
-
+            if (error != nil) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:[[NSString alloc]initWithFormat:@"Error : %@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:@"Cancel", nil];
+                
+                [alertView setDelegate:self];
+                
+                dispatch_async(dispatch_get_main_queue(),^ {
+                    [alertView show];
+                });
+            }
+            
+        }];
+        
+        [self.taskItems removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
+    
+    [self.taskItems removeAllObjects];
+    [self.tableView reloadData];
+    [self loadData];
+    
+    
+}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -216,5 +237,6 @@
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     
 }
+
 
 @end

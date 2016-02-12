@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Microsoft Tasks.xcodeproj">
+      location = "self:/Volumes/Development HD/Samples/Convergence-NativeClient-iOS/Microsoft Tasks.xcodeproj">
    </FileRef>
 </Workspace>

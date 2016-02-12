@@ -3,101 +3,92 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		97C15AF41A27FDF0004A0419 /* SamplesSelectUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C15AF31A27FDF0004A0419 /* SamplesSelectUserViewController.m */; };
 		97C15AF71A280BEF004A0419 /* SamplesApplicationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C15AF61A280BEF004A0419 /* SamplesApplicationData.m */; };
 		97C15AFA1A29C9F3004A0419 /* SamplesAppSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C15AF91A29C9F3004A0419 /* SamplesAppSettingsController.m */; };
-		A7C8E8174A44140EEB0E7EF2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075B6E5720AC4E29872664F4 /* libPods.a */; };
-		B82906B71AE6C98300E1977C /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B82906B61AE6C98300E1977C /* NSDictionary+UrlEncoding.m */; };
-		B82906B91AE6CA8100E1977C /* samplesPolicyData.m in Sources */ = {isa = PBXBuildFile; fileRef = B82906B81AE6CA8100E1977C /* samplesPolicyData.m */; };
-		B82906BD1AE6CD1100E1977C /* samplesShowClaimsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82906BC1AE6CD1100E1977C /* samplesShowClaimsViewController.m */; };
-		B82906C01AE6DA2A00E1977C /* samplesLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B82906BF1AE6DA2A00E1977C /* samplesLoginViewController.m */; };
-		EC01CD8C7777703E90A7F804 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075B6E5720AC4E29872664F4 /* libPods.a */; };
+		B81583EE1AD318CB00CCA892 /* NSDictionary+UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B81583ED1AD318CB00CCA892 /* NSDictionary+UrlEncoding.m */; };
+		B8D009CC1ACDBD3A00C842CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B8D009CB1ACDBD3A00C842CC /* InfoPlist.strings */; };
+		B8D009D21ACDC37500C842CC /* samplesPolicyData.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D009D11ACDC37500C842CC /* samplesPolicyData.m */; };
+		B8D009DC1ACDF0B300C842CC /* Policy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8D009DA1ACDF0B300C842CC /* Policy.xcdatamodeld */; };
+		B8D00A1F1ACE4DF800C842CC /* samplesUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D00A1E1ACE4DF800C842CC /* samplesUseViewController.m */; };
 		FB33714918CA5B7E00234804 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB33714818CA5B7E00234804 /* settings.plist */; };
 		FB3BF22018D0106C007E645E /* samplesWebAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3BF21F18D0106C007E645E /* samplesWebAPIConnector.m */; };
-		FB3BF22118D0106C007E645E /* samplesWebAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3BF21F18D0106C007E645E /* samplesWebAPIConnector.m */; };
-		FB3BF23518D03A88007E645E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3BF23218D03A88007E645E /* Main_iPhone.storyboard */; };
-		FB3BF23618D03A88007E645E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3BF23218D03A88007E645E /* Main_iPhone.storyboard */; };
 		FB3F00DA18C7016200173598 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F00D918C7016200173598 /* Foundation.framework */; };
 		FB3F00DC18C7016200173598 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F00DB18C7016200173598 /* CoreGraphics.framework */; };
 		FB3F00DE18C7016200173598 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F00DD18C7016200173598 /* UIKit.framework */; };
-		FB3F00E018C7016200173598 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F00DF18C7016200173598 /* CoreData.framework */; };
-		FB3F00E618C7016200173598 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB3F00E418C7016200173598 /* InfoPlist.strings */; };
+		FB3F00E018C7016200173598 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F00DF18C7016200173598 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		FB3F00E818C7016200173598 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3F00E718C7016200173598 /* main.m */; };
 		FB3F00EC18C7016200173598 /* samplesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3F00EB18C7016200173598 /* samplesAppDelegate.m */; };
 		FB3F00EF18C7016200173598 /* Microsoft_Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB3F00ED18C7016200173598 /* Microsoft_Tasks.xcdatamodeld */; };
 		FB3F00F118C7016200173598 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB3F00F018C7016200173598 /* Images.xcassets */; };
-		FB3F00F818C7016200173598 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F00F718C7016200173598 /* XCTest.framework */; };
-		FB3F00F918C7016200173598 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F00D918C7016200173598 /* Foundation.framework */; };
-		FB3F00FA18C7016200173598 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F00DD18C7016200173598 /* UIKit.framework */; };
-		FB3F00FB18C7016200173598 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F00DF18C7016200173598 /* CoreData.framework */; };
-		FB3F010318C7016200173598 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB3F010118C7016200173598 /* InfoPlist.strings */; };
-		FB3F010518C7016200173598 /* Microsoft_TasksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3F010418C7016200173598 /* Microsoft_TasksTests.m */; };
 		FB3F011618C7092700173598 /* sampleAddTaskItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3F011518C7092700173598 /* sampleAddTaskItemViewController.m */; };
 		FB3F011C18C709FE00173598 /* samplesTaskListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3F011B18C709FE00173598 /* samplesTaskListTableViewController.m */; };
 		FB3F011F18C713E600173598 /* samplesTaskItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3F011E18C713E600173598 /* samplesTaskItem.m */; };
+		FB4C7C1A1BA08A66003B93C5 /* ADAL_iPhone_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB4C7C181BA08A66003B93C5 /* ADAL_iPhone_Storyboard.storyboard */; };
+		FB4C7C1B1BA08A66003B93C5 /* ADAL_iPad_Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB4C7C191BA08A66003B93C5 /* ADAL_iPad_Storyboard.storyboard */; };
+		FB538F2D1BA36653003ABD9A /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB538F2C1BA36653003ABD9A /* TPKeyboardAvoidingScrollView.m */; };
+		FB538F301BA36875003ABD9A /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB538F2F1BA36875003ABD9A /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		FB70844F1C6D1E6C00CB36DC /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB70844E1C6D1E6C00CB36DC /* Main_iPhone.storyboard */; };
+		FB70845D1C6D1F4400CB36DC /* libADALiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB70845C1C6D1F4400CB36DC /* libADALiOS.a */; };
+		FB7084601C6D1FB300CB36DC /* samplesLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB70845F1C6D1FB300CB36DC /* samplesLoginViewController.m */; };
+		FB7084631C6D203600CB36DC /* samplesShowClaimsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7084621C6D203600CB36DC /* samplesShowClaimsViewController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FB3F00FC18C7016200173598 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FB3F00CE18C7016200173598 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FB3F00D518C7016200173598;
-			remoteInfo = "Microsoft Tasks";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		075B6E5720AC4E29872664F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		268C6853C490B04D8D505AD7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		32C2DA3BB2D20EAD1E82DBA0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		971963C41A6845950026BC5F /* Microsoft Tasks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Microsoft Tasks.entitlements"; sourceTree = "<group>"; };
 		97C15AF01A27FAD6004A0419 /* SamplesSelectUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SamplesSelectUserViewController.h; sourceTree = "<group>"; };
 		97C15AF31A27FDF0004A0419 /* SamplesSelectUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesSelectUserViewController.m; sourceTree = "<group>"; };
-		97C15AF51A280B69004A0419 /* SamplesApplicationData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SamplesApplicationData.h; sourceTree = "<group>"; };
 		97C15AF61A280BEF004A0419 /* SamplesApplicationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesApplicationData.m; sourceTree = "<group>"; };
 		97C15AF81A29C9E3004A0419 /* SamplesAppSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SamplesAppSettingsController.h; sourceTree = "<group>"; };
 		97C15AF91A29C9F3004A0419 /* SamplesAppSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SamplesAppSettingsController.m; sourceTree = "<group>"; };
-		B82906B51AE6C98300E1977C /* NSDictionary+UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UrlEncoding.h"; sourceTree = "<group>"; };
-		B82906B61AE6C98300E1977C /* NSDictionary+UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UrlEncoding.m"; sourceTree = "<group>"; };
-		B82906B81AE6CA8100E1977C /* samplesPolicyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesPolicyData.m; sourceTree = "<group>"; };
-		B82906BA1AE6CA9400E1977C /* samplesPolicyData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = samplesPolicyData.h; sourceTree = "<group>"; };
-		B82906BB1AE6CD1100E1977C /* samplesShowClaimsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesShowClaimsViewController.h; sourceTree = "<group>"; };
-		B82906BC1AE6CD1100E1977C /* samplesShowClaimsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesShowClaimsViewController.m; sourceTree = "<group>"; };
-		B82906BE1AE6DA2A00E1977C /* samplesLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesLoginViewController.h; sourceTree = "<group>"; };
-		B82906BF1AE6DA2A00E1977C /* samplesLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesLoginViewController.m; sourceTree = "<group>"; };
+		B81583EC1AD318CB00CCA892 /* NSDictionary+UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UrlEncoding.h"; sourceTree = "<group>"; };
+		B81583ED1AD318CB00CCA892 /* NSDictionary+UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UrlEncoding.m"; sourceTree = "<group>"; };
+		B8D009CB1ACDBD3A00C842CC /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		B8D009D11ACDC37500C842CC /* samplesPolicyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesPolicyData.m; sourceTree = "<group>"; };
+		B8D009D31ACDC39300C842CC /* samplesPolicyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesPolicyData.h; sourceTree = "<group>"; };
+		B8D009DB1ACDF0B300C842CC /* Policy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Policy.xcdatamodel; sourceTree = "<group>"; };
+		B8D00A151ACDFBA700C842CC /* Policy 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Policy 2.xcdatamodel"; sourceTree = "<group>"; };
+		B8D00A1D1ACE4DF800C842CC /* samplesUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesUseViewController.h; sourceTree = "<group>"; };
+		B8D00A1E1ACE4DF800C842CC /* samplesUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesUseViewController.m; sourceTree = "<group>"; };
 		FB33714818CA5B7E00234804 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		FB3BF21E18D0106C007E645E /* samplesWebAPIConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesWebAPIConnector.h; sourceTree = "<group>"; };
 		FB3BF21F18D0106C007E645E /* samplesWebAPIConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesWebAPIConnector.m; sourceTree = "<group>"; };
-		FB3BF23218D03A88007E645E /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		FB3F00D618C7016200173598 /* Microsoft Tasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Microsoft Tasks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3F00D918C7016200173598 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FB3F00DB18C7016200173598 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FB3F00DD18C7016200173598 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FB3F00DF18C7016200173598 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FB3F00E318C7016200173598 /* Microsoft Tasks-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Microsoft Tasks-Info.plist"; sourceTree = "<group>"; };
-		FB3F00E518C7016200173598 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FB3F00E718C7016200173598 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FB3F00E918C7016200173598 /* Microsoft Tasks-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Microsoft Tasks-Prefix.pch"; sourceTree = "<group>"; };
 		FB3F00EA18C7016200173598 /* samplesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = samplesAppDelegate.h; sourceTree = "<group>"; };
 		FB3F00EB18C7016200173598 /* samplesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = samplesAppDelegate.m; sourceTree = "<group>"; };
 		FB3F00EE18C7016200173598 /* Microsoft_Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Microsoft_Tasks.xcdatamodel; sourceTree = "<group>"; };
 		FB3F00F018C7016200173598 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FB3F00F618C7016200173598 /* Microsoft TasksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Microsoft TasksTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3F00F718C7016200173598 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		FB3F010018C7016200173598 /* Microsoft TasksTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Microsoft TasksTests-Info.plist"; sourceTree = "<group>"; };
-		FB3F010218C7016200173598 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FB3F010418C7016200173598 /* Microsoft_TasksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Microsoft_TasksTests.m; sourceTree = "<group>"; };
 		FB3F011418C7092700173598 /* sampleAddTaskItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sampleAddTaskItemViewController.h; sourceTree = "<group>"; };
 		FB3F011518C7092700173598 /* sampleAddTaskItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sampleAddTaskItemViewController.m; sourceTree = "<group>"; };
 		FB3F011A18C709FE00173598 /* samplesTaskListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesTaskListTableViewController.h; sourceTree = "<group>"; };
 		FB3F011B18C709FE00173598 /* samplesTaskListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesTaskListTableViewController.m; sourceTree = "<group>"; };
 		FB3F011D18C713E600173598 /* samplesTaskItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesTaskItem.h; sourceTree = "<group>"; };
 		FB3F011E18C713E600173598 /* samplesTaskItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesTaskItem.m; sourceTree = "<group>"; };
+		FB4C7C181BA08A66003B93C5 /* ADAL_iPhone_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ADAL_iPhone_Storyboard.storyboard; sourceTree = "<group>"; };
+		FB4C7C191BA08A66003B93C5 /* ADAL_iPad_Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ADAL_iPad_Storyboard.storyboard; sourceTree = "<group>"; };
+		FB538F2B1BA36653003ABD9A /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		FB538F2C1BA36653003ABD9A /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		FB538F2E1BA36875003ABD9A /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		FB538F2F1BA36875003ABD9A /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		FB70844E1C6D1E6C00CB36DC /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		FB70845C1C6D1F4400CB36DC /* libADALiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libADALiOS.a; path = "../../SDKs/azure-activedirectory-library-for-objc/ADALiOS/build/Debug-iphoneos/libADALiOS.a"; sourceTree = "<group>"; };
+		FB70845E1C6D1FB300CB36DC /* samplesLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesLoginViewController.h; sourceTree = "<group>"; };
+		FB70845F1C6D1FB300CB36DC /* samplesLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesLoginViewController.m; sourceTree = "<group>"; };
+		FB7084611C6D203600CB36DC /* samplesShowClaimsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesShowClaimsViewController.h; sourceTree = "<group>"; };
+		FB7084621C6D203600CB36DC /* samplesShowClaimsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = samplesShowClaimsViewController.m; sourceTree = "<group>"; };
+		FB7362EB1BA758820048374F /* samplesApplicationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = samplesApplicationData.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,46 +96,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB70845D1C6D1F4400CB36DC /* libADALiOS.a in Frameworks */,
 				FB3F00DC18C7016200173598 /* CoreGraphics.framework in Frameworks */,
 				FB3F00E018C7016200173598 /* CoreData.framework in Frameworks */,
 				FB3F00DE18C7016200173598 /* UIKit.framework in Frameworks */,
 				FB3F00DA18C7016200173598 /* Foundation.framework in Frameworks */,
-				A7C8E8174A44140EEB0E7EF2 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FB3F00F318C7016200173598 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FB3F00F818C7016200173598 /* XCTest.framework in Frameworks */,
-				FB3F00FB18C7016200173598 /* CoreData.framework in Frameworks */,
-				FB3F00FA18C7016200173598 /* UIKit.framework in Frameworks */,
-				FB3F00F918C7016200173598 /* Foundation.framework in Frameworks */,
-				EC01CD8C7777703E90A7F804 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3815BCDF3B86DDADB63BCC4F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				268C6853C490B04D8D505AD7 /* Pods.debug.xcconfig */,
-				32C2DA3BB2D20EAD1E82DBA0 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		FB3F00CD18C7016200173598 = {
 			isa = PBXGroup;
 			children = (
 				FB3F00E118C7016200173598 /* Microsoft Tasks */,
-				FB3F00FE18C7016200173598 /* Microsoft TasksTests */,
 				FB3F00D818C7016200173598 /* Frameworks */,
 				FB3F00D718C7016200173598 /* Products */,
-				3815BCDF3B86DDADB63BCC4F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				FB3F00D618C7016200173598 /* Microsoft Tasks.app */,
-				FB3F00F618C7016200173598 /* Microsoft TasksTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,12 +127,12 @@
 		FB3F00D818C7016200173598 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB70845C1C6D1F4400CB36DC /* libADALiOS.a */,
 				FB3F00D918C7016200173598 /* Foundation.framework */,
 				FB3F00DB18C7016200173598 /* CoreGraphics.framework */,
 				FB3F00DD18C7016200173598 /* UIKit.framework */,
 				FB3F00DF18C7016200173598 /* CoreData.framework */,
 				FB3F00F718C7016200173598 /* XCTest.framework */,
-				075B6E5720AC4E29872664F4 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -173,36 +140,21 @@
 		FB3F00E118C7016200173598 /* Microsoft Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				FB5123F51BA89B28009BF406 /* UI Code - do not touch */,
 				971963C41A6845950026BC5F /* Microsoft Tasks.entitlements */,
-				FB3BF23218D03A88007E645E /* Main_iPhone.storyboard */,
-				FB3F00E418C7016200173598 /* InfoPlist.strings */,
 				FB3F00EA18C7016200173598 /* samplesAppDelegate.h */,
 				FB3F00EB18C7016200173598 /* samplesAppDelegate.m */,
 				FB3F00F018C7016200173598 /* Images.xcassets */,
-				FB3F00ED18C7016200173598 /* Microsoft_Tasks.xcdatamodeld */,
 				FB3F00E218C7016200173598 /* Supporting Files */,
-				FB3F011418C7092700173598 /* sampleAddTaskItemViewController.h */,
-				FB3F011518C7092700173598 /* sampleAddTaskItemViewController.m */,
-				FB3F011A18C709FE00173598 /* samplesTaskListTableViewController.h */,
-				FB3F011B18C709FE00173598 /* samplesTaskListTableViewController.m */,
 				FB3F011D18C713E600173598 /* samplesTaskItem.h */,
 				FB3F011E18C713E600173598 /* samplesTaskItem.m */,
 				FB3BF21E18D0106C007E645E /* samplesWebAPIConnector.h */,
 				FB3BF21F18D0106C007E645E /* samplesWebAPIConnector.m */,
-				97C15AF01A27FAD6004A0419 /* SamplesSelectUserViewController.h */,
-				97C15AF31A27FDF0004A0419 /* SamplesSelectUserViewController.m */,
-				97C15AF51A280B69004A0419 /* SamplesApplicationData.h */,
+				FB7362EB1BA758820048374F /* samplesApplicationData.h */,
 				97C15AF61A280BEF004A0419 /* SamplesApplicationData.m */,
-				97C15AF81A29C9E3004A0419 /* SamplesAppSettingsController.h */,
-				97C15AF91A29C9F3004A0419 /* SamplesAppSettingsController.m */,
-				B82906B51AE6C98300E1977C /* NSDictionary+UrlEncoding.h */,
-				B82906B61AE6C98300E1977C /* NSDictionary+UrlEncoding.m */,
-				B82906B81AE6CA8100E1977C /* samplesPolicyData.m */,
-				B82906BA1AE6CA9400E1977C /* samplesPolicyData.h */,
-				B82906BB1AE6CD1100E1977C /* samplesShowClaimsViewController.h */,
-				B82906BC1AE6CD1100E1977C /* samplesShowClaimsViewController.m */,
-				B82906BE1AE6DA2A00E1977C /* samplesLoginViewController.h */,
-				B82906BF1AE6DA2A00E1977C /* samplesLoginViewController.m */,
+				B8D009D11ACDC37500C842CC /* samplesPolicyData.m */,
+				B8D009D31ACDC39300C842CC /* samplesPolicyData.h */,
+				B8D009DA1ACDF0B300C842CC /* Policy.xcdatamodeld */,
 			);
 			path = "Microsoft Tasks";
 			sourceTree = "<group>";
@@ -218,22 +170,36 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FB3F00FE18C7016200173598 /* Microsoft TasksTests */ = {
+		FB5123F51BA89B28009BF406 /* UI Code - do not touch */ = {
 			isa = PBXGroup;
 			children = (
-				FB3F010418C7016200173598 /* Microsoft_TasksTests.m */,
-				FB3F00FF18C7016200173598 /* Supporting Files */,
+				FB70845E1C6D1FB300CB36DC /* samplesLoginViewController.h */,
+				FB70845F1C6D1FB300CB36DC /* samplesLoginViewController.m */,
+				B8D009CB1ACDBD3A00C842CC /* InfoPlist.strings */,
+				B81583EC1AD318CB00CCA892 /* NSDictionary+UrlEncoding.h */,
+				FB7084611C6D203600CB36DC /* samplesShowClaimsViewController.h */,
+				FB7084621C6D203600CB36DC /* samplesShowClaimsViewController.m */,
+				FB538F2E1BA36875003ABD9A /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				FB538F2F1BA36875003ABD9A /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+				FB538F2B1BA36653003ABD9A /* TPKeyboardAvoidingScrollView.h */,
+				FB538F2C1BA36653003ABD9A /* TPKeyboardAvoidingScrollView.m */,
+				FB4C7C181BA08A66003B93C5 /* ADAL_iPhone_Storyboard.storyboard */,
+				FB4C7C191BA08A66003B93C5 /* ADAL_iPad_Storyboard.storyboard */,
+				FB3F011418C7092700173598 /* sampleAddTaskItemViewController.h */,
+				FB3F011518C7092700173598 /* sampleAddTaskItemViewController.m */,
+				FB3F011A18C709FE00173598 /* samplesTaskListTableViewController.h */,
+				FB3F011B18C709FE00173598 /* samplesTaskListTableViewController.m */,
+				97C15AF01A27FAD6004A0419 /* SamplesSelectUserViewController.h */,
+				97C15AF31A27FDF0004A0419 /* SamplesSelectUserViewController.m */,
+				97C15AF81A29C9E3004A0419 /* SamplesAppSettingsController.h */,
+				97C15AF91A29C9F3004A0419 /* SamplesAppSettingsController.m */,
+				B8D00A1D1ACE4DF800C842CC /* samplesUseViewController.h */,
+				B8D00A1E1ACE4DF800C842CC /* samplesUseViewController.m */,
+				B81583ED1AD318CB00CCA892 /* NSDictionary+UrlEncoding.m */,
+				FB70844E1C6D1E6C00CB36DC /* Main_iPhone.storyboard */,
+				FB3F00ED18C7016200173598 /* Microsoft_Tasks.xcdatamodeld */,
 			);
-			path = "Microsoft TasksTests";
-			sourceTree = "<group>";
-		};
-		FB3F00FF18C7016200173598 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FB3F010018C7016200173598 /* Microsoft TasksTests-Info.plist */,
-				FB3F010118C7016200173598 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
+			name = "UI Code - do not touch";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,12 +209,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB3F010818C7016200173598 /* Build configuration list for PBXNativeTarget "Microsoft Tasks" */;
 			buildPhases = (
-				242E920A0FC14065B8E09F12 /* Check Pods Manifest.lock */,
 				FB3F00D218C7016200173598 /* Sources */,
 				FB3F00D318C7016200173598 /* Frameworks */,
 				FB3F00D418C7016200173598 /* Resources */,
-				2E16D7D83C534279873FC06F /* Copy Pods Resources */,
-				B844A9A71AEF103A00224ED9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -259,26 +222,6 @@
 			productReference = FB3F00D618C7016200173598 /* Microsoft Tasks.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FB3F00F518C7016200173598 /* Microsoft TasksTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FB3F010B18C7016200173598 /* Build configuration list for PBXNativeTarget "Microsoft TasksTests" */;
-			buildPhases = (
-				573F442CE68680C3300FD91C /* Check Pods Manifest.lock */,
-				FB3F00F218C7016200173598 /* Sources */,
-				FB3F00F318C7016200173598 /* Frameworks */,
-				FB3F00F418C7016200173598 /* Resources */,
-				AD96A739D75DFECDEA53C42D /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FB3F00FD18C7016200173598 /* PBXTargetDependency */,
-			);
-			name = "Microsoft TasksTests";
-			productName = "Microsoft TasksTests";
-			productReference = FB3F00F618C7016200173598 /* Microsoft TasksTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -286,7 +229,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = samples;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					FB3F00D518C7016200173598 = {
@@ -295,15 +238,15 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
-					};
-					FB3F00F518C7016200173598 = {
-						TestTargetID = FB3F00D518C7016200173598;
 					};
 				};
 			};
 			buildConfigurationList = FB3F00D118C7016200173598 /* Build configuration list for PBXProject "Microsoft Tasks" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -315,7 +258,6 @@
 			projectRoot = "";
 			targets = (
 				FB3F00D518C7016200173598 /* Microsoft Tasks */,
-				FB3F00F518C7016200173598 /* Microsoft TasksTests */,
 			);
 		};
 /* End PBXProject section */
@@ -325,159 +267,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB3BF23518D03A88007E645E /* Main_iPhone.storyboard in Resources */,
-				FB3F00E618C7016200173598 /* InfoPlist.strings in Resources */,
+				B8D009CC1ACDBD3A00C842CC /* InfoPlist.strings in Resources */,
 				FB3F00F118C7016200173598 /* Images.xcassets in Resources */,
+				FB4C7C1A1BA08A66003B93C5 /* ADAL_iPhone_Storyboard.storyboard in Resources */,
+				FB70844F1C6D1E6C00CB36DC /* Main_iPhone.storyboard in Resources */,
+				FB4C7C1B1BA08A66003B93C5 /* ADAL_iPad_Storyboard.storyboard in Resources */,
 				FB33714918CA5B7E00234804 /* settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FB3F00F418C7016200173598 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FB3F010318C7016200173598 /* InfoPlist.strings in Resources */,
-				FB3BF23618D03A88007E645E /* Main_iPhone.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		242E920A0FC14065B8E09F12 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		2E16D7D83C534279873FC06F /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		573F442CE68680C3300FD91C /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		AD96A739D75DFECDEA53C42D /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B844A9A71AEF103A00224ED9 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB3F00D218C7016200173598 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB7084631C6D203600CB36DC /* samplesShowClaimsViewController.m in Sources */,
+				B81583EE1AD318CB00CCA892 /* NSDictionary+UrlEncoding.m in Sources */,
 				97C15AFA1A29C9F3004A0419 /* SamplesAppSettingsController.m in Sources */,
 				FB3F011618C7092700173598 /* sampleAddTaskItemViewController.m in Sources */,
-				B82906B71AE6C98300E1977C /* NSDictionary+UrlEncoding.m in Sources */,
 				FB3F011F18C713E600173598 /* samplesTaskItem.m in Sources */,
 				FB3F00EF18C7016200173598 /* Microsoft_Tasks.xcdatamodeld in Sources */,
-				B82906B91AE6CA8100E1977C /* samplesPolicyData.m in Sources */,
-				B82906BD1AE6CD1100E1977C /* samplesShowClaimsViewController.m in Sources */,
 				FB3F011C18C709FE00173598 /* samplesTaskListTableViewController.m in Sources */,
+				FB7084601C6D1FB300CB36DC /* samplesLoginViewController.m in Sources */,
+				B8D00A1F1ACE4DF800C842CC /* samplesUseViewController.m in Sources */,
+				B8D009DC1ACDF0B300C842CC /* Policy.xcdatamodeld in Sources */,
+				FB538F301BA36875003ABD9A /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				FB3F00EC18C7016200173598 /* samplesAppDelegate.m in Sources */,
+				B8D009D21ACDC37500C842CC /* samplesPolicyData.m in Sources */,
 				97C15AF71A280BEF004A0419 /* SamplesApplicationData.m in Sources */,
-				B82906C01AE6DA2A00E1977C /* samplesLoginViewController.m in Sources */,
 				FB3BF22018D0106C007E645E /* samplesWebAPIConnector.m in Sources */,
+				FB538F2D1BA36653003ABD9A /* TPKeyboardAvoidingScrollView.m in Sources */,
 				97C15AF41A27FDF0004A0419 /* SamplesSelectUserViewController.m in Sources */,
 				FB3F00E818C7016200173598 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FB3F00F218C7016200173598 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FB3F010518C7016200173598 /* Microsoft_TasksTests.m in Sources */,
-				FB3BF22118D0106C007E645E /* samplesWebAPIConnector.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FB3F00FD18C7016200173598 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FB3F00D518C7016200173598 /* Microsoft Tasks */;
-			targetProxy = FB3F00FC18C7016200173598 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		FB3F00E418C7016200173598 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FB3F00E518C7016200173598 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		FB3F010118C7016200173598 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FB3F010218C7016200173598 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FB3F010618C7016200173598 /* Debug */ = {
@@ -498,6 +325,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -512,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -544,7 +372,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -552,7 +380,6 @@
 		};
 		FB3F010918C7016200173598 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 268C6853C490B04D8D505AD7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -566,19 +393,23 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Microsoft Tasks/Microsoft Tasks-Prefix.pch";
 				INFOPLIST_FILE = "Microsoft Tasks/Microsoft Tasks-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microm.microsoft.windowsazure.activedirectory.samples.microsofttasks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/Headers/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		FB3F010A18C7016200173598 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32C2DA3BB2D20EAD1E82DBA0 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -592,55 +423,18 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Microsoft Tasks/Microsoft Tasks-Prefix.pch";
 				INFOPLIST_FILE = "Microsoft Tasks/Microsoft Tasks-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.microm.microsoft.windowsazure.activedirectory.samples.microsofttasks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/Headers/**";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		FB3F010C18C7016200173598 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 268C6853C490B04D8D505AD7 /* Pods.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Microsoft Tasks.app/Microsoft Tasks";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Microsoft Tasks/Microsoft Tasks-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Microsoft TasksTests/Microsoft TasksTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		FB3F010D18C7016200173598 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32C2DA3BB2D20EAD1E82DBA0 /* Pods.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Microsoft Tasks.app/Microsoft Tasks";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Microsoft Tasks/Microsoft Tasks-Prefix.pch";
-				INFOPLIST_FILE = "Microsoft TasksTests/Microsoft TasksTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -665,18 +459,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FB3F010B18C7016200173598 /* Build configuration list for PBXNativeTarget "Microsoft TasksTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FB3F010C18C7016200173598 /* Debug */,
-				FB3F010D18C7016200173598 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		B8D009DA1ACDF0B300C842CC /* Policy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B8D00A151ACDFBA700C842CC /* Policy 2.xcdatamodel */,
+				B8D009DB1ACDF0B300C842CC /* Policy.xcdatamodel */,
+			);
+			currentVersion = B8D009DB1ACDF0B300C842CC /* Policy.xcdatamodel */;
+			path = Policy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		FB3F00ED18C7016200173598 /* Microsoft_Tasks.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

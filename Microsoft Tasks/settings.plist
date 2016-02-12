@@ -3,19 +3,27 @@
 <plist version="1.0">
 <dict>
 	<key>authority</key>
-	<string>https://login.microsoftonline.com/common</string>
+	<string>https://login.microsoftonline.com/common/oauth2/v2.0</string>
 	<key>clientId</key>
-	<string>e6d65cc4-f9e8-444a-9ba6-c3c82ce8086b</string>
-	<key>resourceString</key>
-	<string>http://kidventus.com/TodoListService</string>
+	<string>bf52924d-a655-41a9-937c-08fda967e7e7</string>
+	<key>scopes</key>
+	<array>
+		<string>https://graph.microsoft.com/mail.read</string>
+	</array>
+	<key>additionalScopes</key>
+	<array/>
 	<key>redirectUri</key>
-	<string>mstodo://com.microsoft.windowsazure.activedirectory.samples.microsofttasks</string>
-	<key>userId</key>
+	<string>urn:ietf:wg:oauth:2.0:oob</string>
+	<key>response_mode</key>
+	<string>form_post</string>
+	<key>prompt</key>
+	<string></string>
+	<key>login_hint</key>
 	<string></string>
 	<key>taskWebAPI</key>
-	<string>http://localhost:8080/tasks</string>
+	<string>https://kidventus.net/todoserver/tasks</string>
 	<key>fullScreen</key>
-	<true/>
+	<false/>
 	<key>showClaims</key>
 	<true/>
 </dict>

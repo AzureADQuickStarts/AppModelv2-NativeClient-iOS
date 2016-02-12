@@ -42,7 +42,7 @@
     
     SamplesApplicationData* appData = [SamplesApplicationData getInstance];
     
-    [samplesWebAPIConnector doLogin:YES parent:self completionBlock:^(ADUserInformation* userInfo, NSError* error) {
+    [samplesWebAPIConnector doLogin:YES parent:self completionBlock:^(ADProfileInfo* userInfo, NSError* error) {
         if (userInfo && appData.showClaims)
         {
             dispatch_sync(dispatch_get_main_queue(), ^{

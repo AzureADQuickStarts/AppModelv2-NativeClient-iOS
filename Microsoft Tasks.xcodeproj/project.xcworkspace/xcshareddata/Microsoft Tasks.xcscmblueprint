@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1D901B74764A6AD1A35D593D5A17CD434A06570C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1D901B74764A6AD1A35D593D5A17CD434A06570C" : 0,
+    "49839CDBA3606365C76D6A7C893B03090DA93A68" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CC6AE535-B75B-4D22-B2AA-50757CBB1048",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1D901B74764A6AD1A35D593D5A17CD434A06570C" : "Convergence-NativeClient-iOS\/",
+    "49839CDBA3606365C76D6A7C893B03090DA93A68" : "..\/SDKs\/azure-activedirectory-library-for-objc"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Microsoft Tasks",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Microsoft Tasks.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:AzureADSamples\/Convergence-NativeClient-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1D901B74764A6AD1A35D593D5A17CD434A06570C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:AzureAD\/azure-activedirectory-library-for-objc.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "49839CDBA3606365C76D6A7C893B03090DA93A68"
+    }
+  ]
+}

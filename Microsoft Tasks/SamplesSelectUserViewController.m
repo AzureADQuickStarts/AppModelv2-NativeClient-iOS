@@ -1,8 +1,12 @@
 #import "SamplesSelectUserViewController.h"
-#import <ADAuthenticationSettings.h>
+#import <ADALiOS/ADAuthenticationSettings.h>
 #import "ADALiOS/ADAuthenticationContext.h"
-#import "SamplesApplicationData.h"
-#import "samplesTaskListTableViewController.h"
+#import "samplesLoginViewController.h"
+#import <Foundation/Foundation.h>
+#import "samplesTaskItem.h"
+#import "samplesPolicyData.h"
+#import "ADALiOS/ADAuthenticationResult.h"
+#import "samplesApplicationData.h"
 
 @interface SamplesSelectUserViewController ()
 
@@ -15,6 +19,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     self.refreshControl = [[UIRefreshControl alloc] init];
     
@@ -22,23 +27,16 @@
     
     [self setRefreshControl:self.refreshControl];
     self.userList = [[NSMutableArray alloc] init];
+
     
     [self loadData];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    
-[self loadData];
-    
 }
 
 -(void) loadData
 {
     ADAuthenticationError* error;
     id<ADTokenCacheStoring> cache = [ADAuthenticationSettings sharedInstance].defaultTokenCacheStore;
-    NSArray* array = [cache allItemsWithError:&error];
-    
+    NSArray* array = [cache allItems:&error];
     if (error)
     {
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:[[NSString alloc]initWithFormat:@"%@", error.errorDetails] delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:@"Cancel", nil];
@@ -54,16 +52,16 @@
         self.userList = [NSMutableArray new];
         for(ADTokenCacheStoreItem* item in array)
         {
-            ADUserInformation *user = item.userInformation;
-            if (!item.userInformation)
+            ADProfileInfo *user = item.profileInfo;
+            if (!item.profileInfo)
             {
-                user = [ADUserInformation userInformationWithUserId:@"Unknown user" error:nil];
+                user = [ADProfileInfo profileInfoWithUsername:@"Unknown user" error:nil];
             }
-            if (![users containsObject:user.userId])
+            if (![users containsObject:user.username])
             {
                 //New user, add and print:
                 [self.userList addObject:item];
-                [users addObject:user.userId];
+                [users addObject:user.username];
             }
         }
         
@@ -76,8 +74,9 @@
 
 - (IBAction)cancelPressed:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:TRUE];
 }
+
 
 -(void) refreshInvoked:(id)sender forState:(UIControlState)state {
     // Refresh table here...
@@ -88,13 +87,32 @@
 }
 
 
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
+    if (self.userList.count < 1) {
+        
     return 1;
+    
+    }
+    else {
+        // Display a message when the table is empty
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        messageLabel.text = @"No users are currently available. Please add a user above.";
+        messageLabel.textColor = [UIColor blackColor];
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
+        [messageLabel sizeToFit];
+        
+        self.tableView.backgroundView = messageLabel;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -111,14 +129,17 @@
     ADTokenCacheStoreItem *userItem = [self.userList objectAtIndex:indexPath.row];
     if(userItem)
     {
-        if(userItem.userInformation){
+        if(userItem.profileInfo){
             
-            cell.textLabel.text = userItem.userInformation.userId;
+            cell.textLabel.text = userItem.profileInfo.username;
         }
         else
         {
             cell.textLabel.text = @"ADFS User";
         }
+    }
+    else {
+        cell.textLabel.text= @"No logged in users. Add a user above";
     }
     //    if (taskItem.completed) {
     //        cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -137,9 +158,6 @@
     
     //tappedItem.completed = !tappedItem.completed;
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    
-    [self.navigationController popToRootViewControllerAnimated:TRUE];
-    
 }
 
 - (void) getToken:(ADTokenCacheStoreItem*) userItem
@@ -149,14 +167,15 @@
     ADAuthenticationContext* authContext = [ADAuthenticationContext authenticationContextWithAuthority:appData.authority validateAuthority:NO error:&error];
     NSString* userId = nil;
     
-    if(userItem && userItem.userInformation){
-        if(userItem.userInformation.userIdDisplayable){
-            userId = userItem.userInformation.userId;
+    if(userItem && userItem.profileInfo){
+        if(userItem.profileInfo.username){
+            userId = userItem.profileInfo.username;
         }
     }
     
     authContext.parentController = self;
     [ADAuthenticationSettings sharedInstance].enableFullScreen = appData.fullScreen;
+    NSURL *redirectUri = [[NSURL alloc]initWithString:appData.redirectUriString];
     
     if(!appData.correlationId ||
        [[appData.correlationId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0)
@@ -164,23 +183,19 @@
         authContext.correlationId = [[NSUUID alloc] initWithUUIDString:appData.correlationId];
     }
     
-    ADPromptBehavior promptBehavior = AD_PROMPT_AUTO;
+
     if(!userItem){
-        promptBehavior = AD_PROMPT_ALWAYS;
-    }
     
     NSURL *redirectUri = [[NSURL alloc]initWithString:appData.redirectUriString];
-    [authContext acquireTokenWithResource:appData.resourceId
-                                 clientId:appData.clientId
-                              redirectUri:redirectUri
-                           promptBehavior:promptBehavior
-                                   userId:userId
-                     extraQueryParameters:@"nux=1"
+        [authContext acquireTokenSilentWithScopes:appData.scopes
+                                        clientId:appData.clientId
+                                     redirectUri:redirectUri
+                                      identifier:[ADUserIdentifier identifierWithId:userId type:RequiredDisplayableId]
                           completionBlock:^(ADAuthenticationResult *result) {
                               
                               if (result.status != AD_SUCCEEDED)
                               {
-                                  UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:[[NSString alloc]initWithFormat:@"Error : %@", error.localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                                  UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:[[NSString alloc]initWithFormat:@"Error : %@", result.error] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                                   
                                   [alertView setDelegate:self];
                                   
@@ -195,7 +210,34 @@
                                   [self cancelPressed:self];
                               }
                           }];
-    
+    } else {
+        
+        [authContext acquireTokenSilentWithScopes:appData.scopes
+                                        clientId:appData.clientId
+                                     redirectUri:redirectUri
+                                      identifier:[ADUserIdentifier identifierWithId:userId type:RequiredDisplayableId]
+                                 completionBlock:^(ADAuthenticationResult *result) {
+            
+            if (result.status != AD_SUCCEEDED)
+            {
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:[[NSString alloc]initWithFormat:@"Error : %@", result.error] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                
+                [alertView setDelegate:self];
+                
+                dispatch_async(dispatch_get_main_queue(),^ {
+                    [alertView show];
+                });
+            }
+            else
+            {
+                SamplesApplicationData* data = [SamplesApplicationData getInstance];
+                data.userItem = result.tokenCacheStoreItem;
+                [self cancelPressed:self];
+            }
+        }];
+
+        
+    }
 }
 
 

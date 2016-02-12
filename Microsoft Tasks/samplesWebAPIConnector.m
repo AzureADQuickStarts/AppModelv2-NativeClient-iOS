@@ -7,15 +7,43 @@
 //
 
 
-#import "SamplesApplicationData.h"
+
 #import "samplesWebAPIConnector.h"
 #import "ADALiOS/ADAuthenticationContext.h"
 #import "samplesTaskItem.h"
 #import "samplesPolicyData.h"
 #import "ADALiOS/ADAuthenticationSettings.h"
 #import "NSDictionary+UrlEncoding.h"
+#import <Foundation/Foundation.h>
+#import "samplesTaskItem.h"
+#import "samplesPolicyData.h"
+#import "ADALiOS/ADAuthenticationResult.h"
+#import "samplesApplicationData.h"
+
+
+@interface samplesWebAPIConnector ()
+
+@property (strong) NSString *userID;
+
+
+@end
 
 @implementation samplesWebAPIConnector
+
+// Set up to read Policies from CoreData
+//
+// TODO: Add Application Settings to CoreData as well
+//
+
+- (NSManagedObjectContext *)managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
 
 ADAuthenticationContext* authContext;
 bool loadedApplicationSettings;
@@ -31,19 +59,27 @@ bool loadedApplicationSettings;
     return [toTrim stringByTrimmingCharactersInSet:set];
 }
 
-//getToken for generic Web API flows. Returns a token with no additional parameters provided.
-//
-//
-
-+(void) getToken : (BOOL) clearCache
++(void) getTokenClearingCache : (BOOL) clearCache
            parent:(UIViewController*) parent
 completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 {
     SamplesApplicationData* data = [SamplesApplicationData getInstance];
+   // NSString *userId = [[NSString alloc]init];
     if(data.userItem){
         completionBlock(data.userItem.accessToken, nil);
         return;
     }
+    
+ /*   
+    if(data.userItem && data.userItem.userInformation)
+    {
+        userId = data.userItem.profileInfo.username;    }
+    else
+    {
+        userId = nil;
+    }
+  */
+
     
     ADAuthenticationError *error;
     authContext = [ADAuthenticationContext authenticationContextWithAuthority:data.authority error:&error];
@@ -57,12 +93,12 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
     }
     
     [ADAuthenticationSettings sharedInstance].enableFullScreen = data.fullScreen;
-    [authContext acquireTokenWithResource:data.resourceId
+    [authContext acquireTokenWithScopes:data.scopes
+                                additionalScopes: nil
                                  clientId:data.clientId
-                              redirectUri:redirectUri
-                           promptBehavior:AD_PROMPT_AUTO
-                                   userId:data.userItem.userInformation.userId
-                     extraQueryParameters: @"nux=1" // if this strikes you as strange it was legacy to display the correct mobile UX. You most likely won't need it in your code.
+                                 redirectUri:redirectUri
+                                 identifier:[ADUserIdentifier identifierWithId:data.userItem.profileInfo.username type:RequiredDisplayableId]
+                                 promptBehavior:AD_PROMPT_AUTO
                           completionBlock:^(ADAuthenticationResult *result) {
         
         if (result.status != AD_SUCCEEDED)
@@ -81,18 +117,19 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 //
 //
 
-+(void) getTokenWithExtraParams : (BOOL) clearCache
-                          params:(NSDictionary*) params
-                          parent:(UIViewController*) parent
-               completionHandler:(void (^) (NSString*, NSError*))completionBlock;
++(void) getTokenWithExtraParamsClearingCache : (BOOL) clearCache
+           params:(NSDictionary*) params
+           parent:(UIViewController*) parent
+completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 {
     SamplesApplicationData* data = [SamplesApplicationData getInstance];
-    
+
     
     ADAuthenticationError *error;
     authContext = [ADAuthenticationContext authenticationContextWithAuthority:data.authority error:&error];
     authContext.parentController = parent;
     NSURL *redirectUri = [[NSURL alloc]initWithString:data.redirectUriString];
+    params = [self convertv2ParamsToDictionary: data];
     
     if(!data.correlationId ||
        [[data.correlationId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0)
@@ -101,11 +138,12 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
     }
     
     [ADAuthenticationSettings sharedInstance].enableFullScreen = data.fullScreen;
-    [authContext acquireTokenWithResource:data.resourceId
+    [authContext acquireTokenWithScopes:data.scopes
+                                additionalScopes: data.additionalScopes
                                  clientId:data.clientId
                               redirectUri:redirectUri
-                           promptBehavior:AD_PROMPT_AUTO
-                                   userId:data.userItem.userInformation.userId
+                                   identifier:[ADUserIdentifier identifierWithId:data.userItem.profileInfo.username type:RequiredDisplayableId]
+                         promptBehavior:AD_PROMPT_ALWAYS
                      extraQueryParameters: params.urlEncodedString
                           completionBlock:^(ADAuthenticationResult *result) {
                               
@@ -121,14 +159,12 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
                           }];
 }
 
-// getToken for support of sending extra (and unknown) params to the authorization and token endpoints.
-// This method returns the entire claimset as stored in the userInformation collection instead of a token.
-// Use this only for display purposes, it is not necessary
 
-+(void) getClaimsWithExtraParams : (BOOL) clearCache
-                           params:(NSDictionary*) params
-                           parent:(UIViewController*) parent
-                completionHandler:(void (^) (ADUserInformation*, NSError*))completionBlock;
+
++(void) getClaimsWithExtraParamsClearingCache  : (BOOL) clearCache
+                          params:(NSDictionary*) params
+                          parent:(UIViewController*) parent
+               completionHandler:(void (^) (ADProfileInfo*, NSError*))completionBlock;
 {
     SamplesApplicationData* data = [SamplesApplicationData getInstance];
     
@@ -137,6 +173,7 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
     authContext = [ADAuthenticationContext authenticationContextWithAuthority:data.authority error:&error];
     authContext.parentController = parent;
     NSURL *redirectUri = [[NSURL alloc]initWithString:data.redirectUriString];
+   params = [self convertv2ParamsToDictionary: data];
     
     if(!data.correlationId ||
        [[data.correlationId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0)
@@ -145,65 +182,23 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
     }
     
     [ADAuthenticationSettings sharedInstance].enableFullScreen = data.fullScreen;
-    [authContext acquireTokenWithResource:data.resourceId
-                                 clientId:data.clientId
-                              redirectUri:redirectUri
-                           promptBehavior:AD_PROMPT_ALWAYS
-                                   userId:data.userItem.userInformation.userId
-                     extraQueryParameters: params.urlEncodedString
-                          completionBlock:^(ADAuthenticationResult *result) {
-                              
-                              if (result.status != AD_SUCCEEDED)
-                              {
-                                  completionBlock(nil, result.error);
-                              }
+    [authContext acquireTokenWithScopes:data.scopes
+                            additionalScopes: data.additionalScopes
+                              clientId:data.clientId
+                           redirectUri:redirectUri
+                            identifier:[ADUserIdentifier identifierWithId:data.userItem.profileInfo.username type:RequiredDisplayableId]
+                            promptBehavior:AD_PROMPT_ALWAYS
+                  extraQueryParameters: params.urlEncodedString
+                       completionBlock:^(ADAuthenticationResult *result) {
+                           
+                           if (result.status != AD_SUCCEEDED)
+                           {
+                               completionBlock(nil, result.error);
+                           }
                               else
                               {
                                   data.userItem = result.tokenCacheStoreItem;
-                                  completionBlock(result.tokenCacheStoreItem.userInformation, nil);
-                              }
-                          }];
-}
-
-
-// This method returns the entire claimset as stored in the userInformation collection instead of a token.
-// This is meant to show that Claims can be retreived without extra query params. You could easily pass getClaimsWithExtraParams with params = nil.
-
-+(void) getClaims : (BOOL) clearCache
-            parent:(UIViewController*) parent
- completionHandler:(void (^) (ADUserInformation*, NSError*))completionBlock;
-{
-    SamplesApplicationData* data = [SamplesApplicationData getInstance];
-    
-    ADAuthenticationError *error;
-    authContext = [ADAuthenticationContext authenticationContextWithAuthority:data.authority error:&error];
-    authContext.parentController = parent;
-    NSURL *redirectUri = [[NSURL alloc]initWithString:data.redirectUriString];
-    
-    if(!data.correlationId ||
-       [[data.correlationId stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0)
-    {
-        authContext.correlationId = [[NSUUID alloc] initWithUUIDString:data.correlationId];
-    }
-    
-    [ADAuthenticationSettings sharedInstance].enableFullScreen = data.fullScreen;
-    [authContext acquireTokenWithResource:data.resourceId
-                                 clientId:data.clientId
-                              redirectUri:redirectUri
-                           promptBehavior:AD_PROMPT_ALWAYS
-                                   userId:nil
-                     extraQueryParameters: @"nux=1" // if this strikes you as strange it was legacy to display the correct mobile UX. You most likely won't need it in your code.
-
-                          completionBlock:^(ADAuthenticationResult *result) {
-                              
-                              if (result.status != AD_SUCCEEDED)
-                              {
-                                  completionBlock(nil, result.error);
-                              }
-                              else
-                              {
-                                  data.userItem = result.tokenCacheStoreItem;
-                                  completionBlock(result.tokenCacheStoreItem.userInformation, nil);
+                                  completionBlock(result.tokenCacheStoreItem.profileInfo, nil);
                               }
                           }];
 }
@@ -290,6 +285,11 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
             [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:requestBody];
             
+            NSString *myString = [[NSString alloc] initWithData:requestBody encoding:NSUTF8StringEncoding];
+
+            NSLog(@"Request was: %@", request);
+            NSLog(@"Request body was: %@", myString);
+            
             NSOperationQueue *queue = [[NSOperationQueue alloc]init];
             
             [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -311,8 +311,8 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
 }
 
 +(void) deleteTask:(samplesTaskItem*)task
-         parent:(UIViewController*) parent
-completionBlock:(void (^) (bool, NSError* error)) completionBlock
+            parent:(UIViewController*) parent
+   completionBlock:(void (^) (bool, NSError* error)) completionBlock
 {
     if (!loadedApplicationSettings)
     {
@@ -363,14 +363,12 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
 
 +(void) doLogin:(BOOL) prompt
          parent:(UIViewController*) parent
-completionBlock:(void (^) (ADUserInformation* userInfo, NSError* error)) completionBlock
+completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionBlock
 {
-    if (!loadedApplicationSettings)
-    {
-        [self readApplicationSettings];
-    }
     
-    [self getClaims:NO parent:parent completionHandler:^(ADUserInformation* userInfo, NSError* error) {
+
+    
+    [self getClaimsWithExtraParamsClearingCache:NO params:nil parent:parent completionHandler:^(ADProfileInfo* userInfo, NSError* error) {
         
         if (userInfo == nil)
         {
@@ -385,40 +383,12 @@ completionBlock:(void (^) (ADUserInformation* userInfo, NSError* error)) complet
     
 }
 
-// Although not yet used in this sample, this demonstrates how you could pass policies to the server.
-// See the Native-iOS-B2C sample for more information.
-
-+(void) doPolicy:(samplesPolicyData *)policy
-          parent:(UIViewController*) parent
- completionBlock:(void (^) (ADUserInformation* userInfo, NSError* error)) completionBlock
-{
-    if (!loadedApplicationSettings)
-    {
-        [self readApplicationSettings];
-    }
-    
-    NSDictionary* params = [self convertPolicyToDictionary:policy];
-    
-    [self getClaimsWithExtraParams:NO params:params parent:parent completionHandler:^(ADUserInformation* userInfo, NSError* error) {
-        
-        if (userInfo == nil)
-        {
-            completionBlock(nil, error);
-        }
-        
-        else {
-            
-            completionBlock(userInfo, nil);
-        }
-    }];
-    
-}
 
 +(void) craftRequest : (NSString*)webApiUrlString
                parent:(UIViewController*) parent
     completionHandler:(void (^)(NSMutableURLRequest*, NSError* error))completionBlock
 {
-    [self getToken:NO parent:parent completionHandler:^(NSString* accessToken, NSError* error){
+    [self getTokenClearingCache:NO parent:parent completionHandler:^(NSString* accessToken, NSError* error){
         
         if (accessToken == nil)
         {
@@ -452,31 +422,25 @@ completionBlock:(void (^) (ADUserInformation* userInfo, NSError* error)) complet
     return dictionary;
 }
 
-+(NSDictionary*) convertPolicyToDictionary:(samplesPolicyData*)policy
++(NSDictionary*) convertv2ParamsToDictionary:(SamplesApplicationData*)data
 {
     NSMutableDictionary* dictionary = [[NSMutableDictionary alloc]init];
     
-    // Using UUID for nonce. Not recommended.
-    
-    NSString *UUID = [[NSUUID UUID] UUIDString];
-    
-    
-    if (policy.policyID){
-        [dictionary setValue:policy.policyID forKey:@"p"];
-        [dictionary setValue:@"openid" forKey:@"scope"];
-        [dictionary setValue:UUID forKey:@"nonce"];
-        [dictionary setValue:@"query" forKey:@"response_mode"];
-        [dictionary setValue:@"1" forKey:@"nux"];
-    }
+       // [dictionary setValue:data.responseMode forKey:@"response_mode"];
+       // [dictionary setValue:data.prompt forKey:@"prompt"];
+      //  [dictionary setValue:@"testslice" forKey:@"slice"];
+      //  [dictionary setValue:@"true" forKey:@"msaproxy"];
+   //     [dictionary setValue:@"true" forKey:@"claimsprofile"];
     
     return dictionary;
 }
 
 
 
+
 +(void) signOut
 {
-    [authContext.tokenCacheStore removeAllWithError:nil];
+    [authContext.tokenCacheStore removeAll:nil];
     
     NSHTTPCookie *cookie;
     
