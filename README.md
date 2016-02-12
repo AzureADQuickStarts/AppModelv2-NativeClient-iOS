@@ -22,7 +22,7 @@ Copy down the **Application ID** that is assigned to your app, you'll need it sh
 
 ### Step 2: Download the iOS v2 Native Client Sample code
 
-* `$ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git`
+* `$ git clone https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-iOS.git`
 
 ### Step 3: Download Cocoapods (if you don't already have it)
 
